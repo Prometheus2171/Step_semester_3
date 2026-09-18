@@ -35,7 +35,7 @@ public class Session4Assignment {
         return best;
     }
 
-    public static List<List<Integer>> threeSum(int[] nums) {
+    public static int[][] threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
 
@@ -67,7 +67,14 @@ public class Session4Assignment {
             }
         }
 
-        return result;
+        int[][] triplets = new int[result.size()][3];
+        for (int i = 0; i < result.size(); i++) {
+            List<Integer> triplet = result.get(i);
+            triplets[i][0] = triplet.get(0);
+            triplets[i][1] = triplet.get(1);
+            triplets[i][2] = triplet.get(2);
+        }
+        return triplets;
     }
 
     public static int subarraySum(int[] nums, int k) {
@@ -110,7 +117,7 @@ public class Session4Assignment {
         System.out.println(maxSubArray(new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4}));
 
         System.out.println("\nProblem 3");
-        System.out.println(threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
+        System.out.println(Arrays.deepToString(threeSum(new int[]{-1, 0, 1, 2, -1, -4})));
 
         System.out.println("\nProblem 4");
         System.out.println(subarraySum(new int[]{1, 1, 1}, 2));
