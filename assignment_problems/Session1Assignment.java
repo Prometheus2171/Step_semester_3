@@ -1,29 +1,31 @@
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 public class Session1Assignment {
     public static void checkDuplicateSeats(int[] seatNumbers) {
-        Set<Integer> seen = new HashSet<>();
-        Set<Integer> duplicates = new LinkedHashSet<>();
+        boolean foundDuplicate = false;
 
-        for (int seat : seatNumbers) {
-            if (!seen.add(seat)) {
-                duplicates.add(seat);
+        for (int i = 0; i < seatNumbers.length; i++) {
+            boolean alreadyReported = false;
+            for (int j = 0; j < i; j++) {
+                if (seatNumbers[i] == seatNumbers[j]) {
+                    alreadyReported = true;
+                    break;
+                }
+            }
+
+            if (alreadyReported) {
+                continue;
+            }
+
+            for (int j = i + 1; j < seatNumbers.length; j++) {
+                if (seatNumbers[i] == seatNumbers[j]) {
+                    System.out.println("Duplicate Seat Number Found: " + seatNumbers[i]);
+                    foundDuplicate = true;
+                    break;
+                }
             }
         }
 
-        if (duplicates.isEmpty()) {
+        if (!foundDuplicate) {
             System.out.println("No Duplicate Seats Found");
-        } else {
-            StringBuilder sb = new StringBuilder();
-            for (int value : duplicates) {
-                if (sb.length() > 0) {
-                    sb.append(", ");
-                }
-                sb.append(value);
-            }
-            System.out.println("Duplicate Seat Number Found: " + sb);
         }
     }
 
