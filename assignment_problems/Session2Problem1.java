@@ -1,10 +1,14 @@
 public class Session2Problem1 {
-    public static boolean hasValidPinLength(String pin) {
-        return pin != null && pin.length() == 4;
+    public static void checkPinLength(String pin) {
+        if (pin != null && pin.length() == 4) {
+            System.out.println("PIN length OK.");
+        } else {
+            System.out.println("Invalid PIN - must be exactly 4 digits.");
+        }
     }
 
     public static void main(String[] args) {
-        System.out.println(hasValidPinLength("482"));
-        System.out.println(hasValidPinLength("4820"));
+        checkPinLength("482");
+        checkPinLength("4820");
     }
 }
